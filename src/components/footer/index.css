@@ -1,0 +1,17 @@
+.footer-wrapper {
+    position: absolute;
+    height: 30px;
+    width: 100vw;
+    background-color: goldenrod;
+    margin-bottom: 0;
+    z-index:999;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.footer-element {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-family: 'Trebuchet MS';
+}

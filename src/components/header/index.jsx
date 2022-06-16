@@ -13,6 +13,8 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch, { SwitchProps } from "@mui/material/Switch";
+import { useContext } from "react";
+import { ThemeContext } from "../../Context";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -129,10 +131,23 @@ const swLinks = [
   },
 ];
 
+
 export const Header = ({ fan }) => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const changeTheme = (e) => {
+    if (e.target.checked) {
+        setTheme("dark");
+    } else {
+        setTheme("light");
+    }
+  };
+
+  console.log(theme);
+
   return (
-    <header>
-      <div className="links-layout">
+    <header className={`${theme === "light" ? "light" : "dark"}`}>
+      <div className={`links-layout ${theme === "light" ? "light" : "dark"}`}>
         {swLinks.map((link) => (
           <a
             key={link.name}
@@ -147,6 +162,13 @@ export const Header = ({ fan }) => {
         ))}
       </div>
       <StarWarsLogoSVG />
+      <FormControlLabel
+                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                label="Switch theme"
+                className={`${theme === "light" ? "light" : "dark"}`}
+                onChange={changeTheme}
+            />
+      
       <div className="search-layout">
         <Search>
             <SearchIconWrapper>
@@ -158,6 +180,7 @@ export const Header = ({ fan }) => {
             />
         </Search>
         <div
+            className={`${theme === "light" ? "light" : "dark"}`}
             style={{ paddingTop: "1rem" }}
         >
             I am fan of: {fan}

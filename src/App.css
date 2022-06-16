@@ -114,3 +114,12 @@ hr {
   background-color: rgb(37, 33, 81);
   transform: translateY(4px);
 }
+
+.light {
+  background-color: wheat !important;
+  color: black !important;
+}
+
+.dark {
+  color: white !important;
+}

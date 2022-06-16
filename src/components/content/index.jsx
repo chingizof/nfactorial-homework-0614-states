@@ -8,15 +8,19 @@ import { ItemSpisok } from "../sw-item-spisok";
 
 import { ItemLists } from "../sw-item-lists";
 
+import { useContext } from "react";
+import { ThemeContext } from "../../Context";
+
 export const Content = ({ handleCreateFan }) => {
   const [selector, setSelector] = useState("Characters");
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleSelectorChange = (event) => {
     setSelector(event.target.value);
   };
 
   return (
-    <div className="content-layout">
+    <div className={`content-layout ${theme==="light"? "light":"dark"}`}>
       <select
         value={selector}
         placeholder="Choose your path"

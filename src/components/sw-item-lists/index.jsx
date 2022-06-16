@@ -1,11 +1,14 @@
+import { ThemeContext } from "@emotion/react";
 import { useContext } from "react";
 import { DefaultContext } from "../../Context";
 
 export const ItemLists = ({ item, children, type }) => {
   const { handleCreateFan } = useContext(DefaultContext);
 
+const { theme } = useContext(ThemeContext)
+
   return (
-    <div key={item.name} className="item-list-layout">
+    <div key={item.name} className={`item-list-layout ${theme === "light" ? "light" : "dark"}`}>
       <div>
         <p>name: {item.name}</p>
         {children}
